@@ -1,0 +1,28 @@
+<h2>New Artist</h2>
+
+<form action="/artists" method="post">
+    <label for="artist[name]">Name:</label>
+    <input name="artist[name]">
+
+    <!-- <label for="artistx[photo_url]">Photo URL:</label> -->
+    <label for="artist[photo_url]">Photo URL:</label>
+    <input name="artist[photo_url]">
+
+    <label for="artist[nationality]">Nationality:</label>
+    <input name="artist[nationality]">
+
+    <input type="submit" value="Create">
+</form>
+
+              <!-- And then the corresponding view, views/instructors/new.erb...
+
+
+              <form action="/instructors" method="post" >
+                <label>Name:</label>
+                <input name="instructor[name]">
+
+                <label>Age:</label>
+                <input name="instructor[age]">
+
+                <input type="submit" value="Create">
+              </form> -->

@@ -1,6 +1,6 @@
 DROP TABLE IF EXISTS pokemons           CASCADE;
 
-create table pokemons (
+create table pokemons (   --ACTIVERECORD LOOKS FOR TABLENAME THAT IS A PLURAL OF CLASSNAME OR SOMETHING OR OTHER THING-Y
   id SERIAL PRIMARY KEY,
   name VARCHAR(255),
   cp VARCHAR(255),

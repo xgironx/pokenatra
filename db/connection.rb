@@ -11,8 +11,8 @@ ActiveRecord::Base.establish_connection({
 # )
 
 # Fix an issue with sinatra and Active Record where connections are left open
-# if defined? Sinatra
-# 	after do
-# 	  ActiveRecord::Base.connection.close
-# 	end
-# end
+if defined? Sinatra
+	after do
+	  ActiveRecord::Base.connection.close
+	end
+end
