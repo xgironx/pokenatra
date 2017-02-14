@@ -1,0 +1,112 @@
+201702141343L   EL MARTES   GIRO
+squirtle = Pokemon.find_by(name: "Squirtle")
+squirtle_cp = squirtle.cp
+charmander = Pokemon.find_by(poke_type: "water")
+charmander = Pokemon.find(1)
+charmander.save
+#Active Record provides a rich API for accessing data within a database. Below are a few examples of different data access methods provided by Active Record.
+# return a collection with all pokemons
+pokemons = Pokemon.all
+# return the first pokemon
+pokemon = Pokemon.first
+# return the first pokemon named Pikachu
+pikachu = Pokemon.find_by(name: 'Pikachu')
+# find all pokemons named Pikachu who are fires and sort by id in reverse chronological order
+pokemons = Pokemon.where(name: 'Pikachu', poke_type: ‘lightning').order(id: :desc)
+# You can learn more about querying an Active Record model in the Active Record Query Interface guide.
+not_usa = Pokemon.where.not(cp: "rand(800)")
+                            # QUERY BELOW FAILED BC OF WINDOWS-STYLE-ANGLE SINGLE QUOTE
+not_usa = Pokemon.where("cp != 'rand(800)’”)
+                            # QUERY BELOW WORKED AFTER I CHANGED TO STRAIGHT-UPDOWN SINGLE QUOTE
+not_usa = Pokemon.where("cp != 'rand(800)'")
+
+squirtle = Pokemon.find_by(name: "Squirtle")
+charmander = Pokemon.find_by(poke_type: "water")
+not_usa = Pokemon.where.not(cp: "rand(800)”)
+
+
+RESULTS OF ACTIVERECORD QUERIES Qs:
+
+[57] pry(main)> not_usa = Pokemon.where("cp != 'rand(800)'")
+=> [#<Pokemon:0x007f92ba990288 id: 1, name: "Charmander", cp: "750", poke_type: "fire", img_url: "https://img.pokemondb.net/artwork/charmander.jpg">,
+ #<Pokemon:0x007f92ba98b918 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">,
+ #<Pokemon:0x007f92ba98b260 id: 3, name: "Pikachu", cp: "181", poke_type: "lightning", img_url: "https://img.pokemondb.net/artwork/pikachu.jpg">,
+ #<Pokemon:0x007f92ba98add8 id: 4, name: "Bulbasaur", cp: "191", poke_type: "grass", img_url: "https://img.pokemondb.net/artwork/bulbasaur.jpg">,
+ #<Pokemon:0x007f92ba98a1a8 id: 5, name: "Clefairy", cp: "687", poke_type: "fairy", img_url: "https://img.pokemondb.net/artwork/clefairy.jpg">,
+ #<Pokemon:0x007f92ba983ad8 id: 6, name: "Nidoking", cp: "237", poke_type: "poison ground", img_url: "https://img.pokemondb.net/artwork/nidoking.jpg">,
+ #<Pokemon:0x007f92ba9831a0 id: 7, name: "Gengar", cp: "668", poke_type: "ghost poison", img_url: "https://img.pokemondb.net/artwork/gengar.jpg">,
+ #<Pokemon:0x007f92ba982b38 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[58] pry(main)> not_usa = Pokemon.where.not(cp: "rand(800)")
+=> [#<Pokemon:0x007f92bb4af178 id: 1, name: "Charmander", cp: "750", poke_type: "fire", img_url: "https://img.pokemondb.net/artwork/charmander.jpg">,
+ #<Pokemon:0x007f92bb4af038 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">,
+ #<Pokemon:0x007f92bb4aeef8 id: 3, name: "Pikachu", cp: "181", poke_type: "lightning", img_url: "https://img.pokemondb.net/artwork/pikachu.jpg">,
+ #<Pokemon:0x007f92bb4aedb8 id: 4, name: "Bulbasaur", cp: "191", poke_type: "grass", img_url: "https://img.pokemondb.net/artwork/bulbasaur.jpg">,
+ #<Pokemon:0x007f92bb4aec78 id: 5, name: "Clefairy", cp: "687", poke_type: "fairy", img_url: "https://img.pokemondb.net/artwork/clefairy.jpg">,
+ #<Pokemon:0x007f92bb4aeb38 id: 6, name: "Nidoking", cp: "237", poke_type: "poison ground", img_url: "https://img.pokemondb.net/artwork/nidoking.jpg">,
+ #<Pokemon:0x007f92bb4ae9f8 id: 7, name: "Gengar", cp: "668", poke_type: "ghost poison", img_url: "https://img.pokemondb.net/artwork/gengar.jpg">,
+ #<Pokemon:0x007f92bb4ae8b8 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[59] pry(main)> # QUERY BELOW FAILED BC OF WINDOWS-STYLE-ANGLE SINGLE QUOTE
+[60] pry(main)> not_usa = Pokemon.where("cp != 'rand(800)’”)
+[60] pry(main)*                             # QUERY BELOW WORKED AFTER I CHANGED TO STRAIGHT-UPDOWN SINGLE QUOTE
+[60] pry(main)* not_usa = Pokemon.where("cp != 'rand(800)'")
+[60] pry(main)* not_usa = Pokemon.where.not(cp: "rand(800)")
+SyntaxError: unexpected tIDENTIFIER, expecting end-of-input
+ = Pokemon.where.not(cp: "rand(800)")
+                              ^
+[60] pry(main)> not_usa = Pokemon.where.not(cp: "rand(800)")
+=> [#<Pokemon:0x007f92bad12500 id: 1, name: "Charmander", cp: "750", poke_type: "fire", img_url: "https://img.pokemondb.net/artwork/charmander.jpg">,
+ #<Pokemon:0x007f92bad123c0 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">,
+ #<Pokemon:0x007f92bad12280 id: 3, name: "Pikachu", cp: "181", poke_type: "lightning", img_url: "https://img.pokemondb.net/artwork/pikachu.jpg">,
+ #<Pokemon:0x007f92bad12140 id: 4, name: "Bulbasaur", cp: "191", poke_type: "grass", img_url: "https://img.pokemondb.net/artwork/bulbasaur.jpg">,
+ #<Pokemon:0x007f92bad12000 id: 5, name: "Clefairy", cp: "687", poke_type: "fairy", img_url: "https://img.pokemondb.net/artwork/clefairy.jpg">,
+ #<Pokemon:0x007f92bad11ec0 id: 6, name: "Nidoking", cp: "237", poke_type: "poison ground", img_url: "https://img.pokemondb.net/artwork/nidoking.jpg">,
+ #<Pokemon:0x007f92bad11d80 id: 7, name: "Gengar", cp: "668", poke_type: "ghost poison", img_url: "https://img.pokemondb.net/artwork/gengar.jpg">,
+ #<Pokemon:0x007f92bad11c40 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[61] pry(main)> not_usa = Pokemon.where("cp != 'rand(800)'")
+=> [#<Pokemon:0x007f92bb877df0 id: 1, name: "Charmander", cp: "750", poke_type: "fire", img_url: "https://img.pokemondb.net/artwork/charmander.jpg">,
+ #<Pokemon:0x007f92bb877b20 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">,
+ #<Pokemon:0x007f92bb877738 id: 3, name: "Pikachu", cp: "181", poke_type: "lightning", img_url: "https://img.pokemondb.net/artwork/pikachu.jpg">,
+ #<Pokemon:0x007f92bb8774e0 id: 4, name: "Bulbasaur", cp: "191", poke_type: "grass", img_url: "https://img.pokemondb.net/artwork/bulbasaur.jpg">,
+ #<Pokemon:0x007f92bb877288 id: 5, name: "Clefairy", cp: "687", poke_type: "fairy", img_url: "https://img.pokemondb.net/artwork/clefairy.jpg">,
+ #<Pokemon:0x007f92bb877008 id: 6, name: "Nidoking", cp: "237", poke_type: "poison ground", img_url: "https://img.pokemondb.net/artwork/nidoking.jpg">,
+ #<Pokemon:0x007f92bb876e00 id: 7, name: "Gengar", cp: "668", poke_type: "ghost poison", img_url: "https://img.pokemondb.net/artwork/gengar.jpg">,
+ #<Pokemon:0x007f92bb876c20 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[62] pry(main)> squirtle = Pokemon.find_by(name: "Squirtle")
+=> #<Pokemon:0x007f92bb8fe238 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">
+[63] pry(main)> charmander = Pokemon.find_by(poke_type: "water")
+=> #<Pokemon:0x007f92bb4f6708 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">
+[64] pry(main)> not_usa = Pokemon.where.not(cp: "rand(800)")
+=> [#<Pokemon:0x007f92bb499828 id: 1, name: "Charmander", cp: "750", poke_type: "fire", img_url: "https://img.pokemondb.net/artwork/charmander.jpg">,
+ #<Pokemon:0x007f92bb4996c0 id: 2, name: "Squirtle", cp: "410", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/squirtle.jpg">,
+ #<Pokemon:0x007f92bb499580 id: 3, name: "Pikachu", cp: "181", poke_type: "lightning", img_url: "https://img.pokemondb.net/artwork/pikachu.jpg">,
+ #<Pokemon:0x007f92bb499440 id: 4, name: "Bulbasaur", cp: "191", poke_type: "grass", img_url: "https://img.pokemondb.net/artwork/bulbasaur.jpg">,
+ #<Pokemon:0x007f92bb499300 id: 5, name: "Clefairy", cp: "687", poke_type: "fairy", img_url: "https://img.pokemondb.net/artwork/clefairy.jpg">,
+ #<Pokemon:0x007f92bb4991c0 id: 6, name: "Nidoking", cp: "237", poke_type: "poison ground", img_url: "https://img.pokemondb.net/artwork/nidoking.jpg">,
+ #<Pokemon:0x007f92bb499058 id: 7, name: "Gengar", cp: "668", poke_type: "ghost poison", img_url: "https://img.pokemondb.net/artwork/gengar.jpg">,
+ #<Pokemon:0x007f92bb498f18 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[65] pry(main)>
+
+
+ #<Pokemon:0x007f92bb498f18 id: 8, name: "Blastoise", cp: "145", poke_type: "water", img_url: "https://img.pokemondb.net/artwork/blastoise.jpg">]
+[65] pry(main)> exit
+[2017-02-14 13:36:35] INFO  WEBrick 1.3.1
+[2017-02-14 13:36:35] INFO  ruby 2.4.0 (2016-12-24) [x86_64-darwin16]
+== Someone is already performing on port 4567!
+/Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:201:in `bind': Address already in use - bind(2) for 127.0.0.1:4567 (Errno::EADDRINUSE)
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:201:in `listen'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:750:in `block in tcp_server_sockets'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:227:in `each'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:227:in `foreach'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/socket.rb:748:in `tcp_server_sockets'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/webrick/utils.rb:65:in `create_listeners'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/webrick/server.rb:128:in `listen'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/webrick/server.rb:109:in `initialize'
+	from /Users/justingiron/.rvm/rubies/ruby-2.4.0/lib/ruby/2.4.0/webrick/httpserver.rb:47:in `initialize'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/rack-1.6.5/lib/rack/handler/webrick.rb:31:in `new'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/rack-1.6.5/lib/rack/handler/webrick.rb:31:in `run'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/sinatra-1.4.8/lib/sinatra/base.rb:1506:in `start_server'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/sinatra-1.4.8/lib/sinatra/base.rb:1444:in `run!'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/sinatra-contrib-1.4.7/lib/sinatra/reloader.rb:246:in `run!'
+	from /Users/justingiron/.rvm/gems/ruby-2.4.0/gems/sinatra-1.4.8/lib/sinatra/main.rb:25:in `block in <module:Sinatra>'
+  Tue Feb 14 13:36:35 ~/wdi/exercises/pokenatra (master *)
+$

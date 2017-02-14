@@ -1,4 +1,5 @@
 require 'active_record'
+require 'pry'
 # require 'ffaker'
 require 'pg'
 require_relative 'connection'
