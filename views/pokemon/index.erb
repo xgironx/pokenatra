@@ -3,9 +3,9 @@
 </h2>
 
 <ul>
-    <% @pokemon.each do |pokemon| %>
+    <% @pokemons.each do |pokemon| %>
     <li>
-        <a href="/pokemon/<%= pokemon.id %>">
+        <a href="/pokemons/<%= pokemon.id %>">
             <%= pokemon.name %>
         </a>
     </li>

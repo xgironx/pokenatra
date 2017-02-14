@@ -14,14 +14,14 @@ require_relative 'db/connection.rb'
 require_relative 'models/pokemon'
 							# require_relative 'models/song'
 
-get '/pokemon' do
-    @pokemon = Pokemon.all
+get '/pokemons' do
+    @pokemons = Pokemon.all
     erb :"pokemon/index"
 end
 							# ###############################################################_GIRO
 							# DONT USE TRAILING SLASH, NO WORK
-get '/pokemon/:id' do
-    @artist = Pokemon.find(params[:id])
+get '/pokemons/:id' do
+    @pokemon = Pokemon.find(params[:id])
     # @pokemon = Pokemon.find(params[:id])
     erb :"pokemon/show"
 end           # ###############################################################_GIRO
@@ -30,7 +30,7 @@ end           # ###############################################################_
 							# ORDER COUNTS, THIS HAS TO BE IN FRONT OF THE post, create new
 							# THAT YOU SEE DOWN AROUND LINE #37 BELOW
 							# FOR SOME REASON I DIDNT UNDERSTAND
-get '/pokemon/new' do
+get '/pokemons/new' do
     @pokemon = Pokemon.all
     erb :"pokemon/new"
 end           # ###############################################################_GIRO
@@ -54,7 +54,10 @@ end           # ###############################################################_
 							#   @artist.destroy
 							#   redirect("/pokemon")
 							# end
-
 puts 'end of application'
-
-							# binding.pry
+							# binding.pry       #GIRO W JAS & EVA
+                                  #      DIDNT NEED THIS HERE IN
+                              # index.erb
+                                  #      SINCE ITS IN THE
+                              # console.rb
+                                  #      FILE

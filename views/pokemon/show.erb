@@ -1,30 +1,18 @@
-							<!--  <a href='/pokemon/<%= @pokemon.id %>/edit'>  Edit This pokemon</a> -->
-<h2><%= @pokemon.name %>
-    <a href="/pokemon/<%= @pokemon.id %>/edit">
+#@@<h2><%= @pokemon.name %>
+    <a href="/pokemon/<%=     @pokemon.id %>/edit">
         (edit)
     </a>
 </h2>
-
-							<!-- <h2><%= @pokemon.name %>   <a href="/pokemon/<%= @pokemon.id %>/edit">          (edit)</a></h2> -->
-							<!-- <h4><%= @pokemon.nationality %></h4> -->
-<h4><%= @pokemon.poke_type %></h4>
-
-							<!-- <img src="<%= @pokemon.photo_url %>"> -->
-							<!-- <img class='pokemon-photo' src="<%= @pokemon.photo_url %>"> -->
-
+<h4><%=                       @pokemon.poke_type %></h4>
 <h3>pokemon</h3>
 <ul>
-    <% @pokemon.pokemon.each do |pokemon| %>
-
-    							<!-- build the list element for each pokemon -->
+    <%# @pokemon.each do |pokemon| %>
     <li>
-        <a href="/pokemon/<%= pokemon.id %>">
-            <%= pokemon.poke_type %>
-            (<%= pokemon.cp %>)
-            							<!-- <%= pokemon.poke_type %> (<%= pokemon.album %>) -->
+        <a href="/pokemon/<%= @pokemon.id %>">
+            <%=               @pokemon.poke_type %>
+            (<%=              @pokemon.cp %>)
         </a>
     </li>
-
-    <% end %>
+    <%# end %>
 </ul>
-<a href='/pokemon/<%= @pokemon.id %>/edit'>Edit This pokemon</a>
+<a href='/pokemons/<%=       @pokemon.id %>/edit'>Edit This pokemon</a>
